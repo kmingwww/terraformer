@@ -73,7 +73,7 @@ func (g *BatchGenerator) loadJobDefinitions(batchClient *batch.Client) error {
 			return err
 		}
 		for _, jobDefinition := range page.JobDefinitions {
-			jobDefinitionName := StringValue(jobDefinition.JobDefinitionName) + ":" + fmt.Sprint(jobDefinition.Revision)
+			jobDefinitionName := StringValue(jobDefinition.JobDefinitionName) + ":" + fmt.Sprint(*jobDefinition.Revision)
 			g.Resources = append(g.Resources, terraformutils.NewResource(
 				jobDefinitionName,
 				jobDefinitionName,
